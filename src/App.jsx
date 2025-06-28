@@ -191,17 +191,18 @@ function App() {
     }
 
     try {
-      const formData = new FormData();
-      
+      let requestBody;
+      let headers = {};
+
       if (file) {
-        formData.append('file', file);
+        // Для файлов используем FormData (пока отключено в API)
+        setError('Загрузка файлов временно недоступна. Используйте текстовый ввод.');
+        setState('upload');
+        return;
       } else if (textInput) {
-        formData.append('text', textInput);
-      }
-      
-      // Add Telegram init data for validation
-      if (telegramData) {
-        formData.append('initData', telegramData);
+        // Для текста используем JSON
+        requestBody = JSON.stringify({ text: textInput });
+        headers['Content-Type'] = 'application/json';
       }
 
       // Simulate progress
@@ -211,7 +212,8 @@ function App() {
 
       const response = await fetch(`${API_BASE_URL}/api/generate-flashcards`, {
         method: 'POST',
-        body: formData,
+        headers,
+        body: requestBody,
       });
 
       clearInterval(progressInterval);
