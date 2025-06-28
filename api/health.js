@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+export default function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     res.status(200).json({
       status: 'OK',
       timestamp: Date.now(),
-      version: '1.0.0',
+      version: '1.0.1',
       claudeApi: process.env.CLAUDE_API_KEY ? 'configured' : 'missing',
       telegramBot: process.env.TELEGRAM_BOT_TOKEN ? 'configured' : 'missing'
     });
@@ -21,4 +21,4 @@ module.exports = (req, res) => {
     console.error('Health check error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-};
+}

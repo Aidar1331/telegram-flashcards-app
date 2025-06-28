@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+export default function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -11,7 +11,7 @@ module.exports = (req, res) => {
 
   try {
     res.status(200).json({ 
-      message: 'API работает!', 
+      message: 'API работает отлично!', 
       timestamp: Date.now(),
       environment: 'vercel',
       node_version: process.version,
@@ -21,4 +21,4 @@ module.exports = (req, res) => {
     console.error('Test API error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-};
+}

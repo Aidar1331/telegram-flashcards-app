@@ -1,4 +1,4 @@
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -17,15 +17,18 @@ module.exports = async (req, res) => {
     const mockFlashcards = [
       {
         "front": "Что такое React?",
-        "back": "JavaScript библиотека для создания пользовательских интерфейсов"
+        "back": "JavaScript библиотека для создания пользовательских интерфейсов",
+        "confidence": 9
       },
       {
         "front": "Что такое useState?", 
-        "back": "React Hook для управления состоянием компонента"
+        "back": "React Hook для управления состоянием компонента",
+        "confidence": 8
       },
       {
         "front": "Что такое useEffect?",
-        "back": "React Hook для выполнения побочных эффектов в функциональных компонентах"
+        "back": "React Hook для выполнения побочных эффектов в функциональных компонентах",
+        "confidence": 7
       }
     ];
 
@@ -43,4 +46,4 @@ module.exports = async (req, res) => {
       message: error.message 
     });
   }
-};
+}
