@@ -1,10 +1,10 @@
 // Vercel serverless function for generating flashcards
-import crypto from 'crypto';
-import { IncomingForm } from 'formidable';
-import fs from 'fs';
-import pdfParse from 'pdf-parse';
-import mammoth from 'mammoth';
-import Anthropic from '@anthropic-ai/sdk';
+const crypto = require('crypto');
+const { IncomingForm } = require('formidable');
+const fs = require('fs');
+const pdfParse = require('pdf-parse');
+const mammoth = require('mammoth');
+const Anthropic = require('@anthropic-ai/sdk');
 
 // Initialize Claude client
 const anthropic = new Anthropic({
@@ -12,7 +12,7 @@ const anthropic = new Anthropic({
 });
 
 // Disable default body parser
-export const config = {
+const config = {
   api: {
     bodyParser: false,
   },
@@ -157,7 +157,7 @@ async function generateFlashcards(text) {
   }
 }
 
-export default async function handler(req, res) {
+const handler = async function (req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -261,4 +261,7 @@ export default async function handler(req, res) {
     
     res.status(statusCode).json({ error: errorMessage });
   }
-}
+};
+
+module.exports = handler;
+module.exports.config = config;
