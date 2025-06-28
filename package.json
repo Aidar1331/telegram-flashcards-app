@@ -1,29 +1,32 @@
 {
-  "name": "telegram-flashcards-app",
+  "name": "flashcards-frontend",
+  "private": true,
   "version": "1.0.0",
-  "description": "Telegram Mini App for generating flashcards from files and text using Claude API",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
-    "start": "cd backend && npm start",
-    "deploy:vercel": "cd frontend && npx vercel --prod",
-    "deploy:railway": "railway deploy",
-    "setup": "chmod +x scripts/*.sh && ./scripts/install.sh"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "vercel-build": "npm run build"
   },
-  "keywords": ["telegram", "mini-app", "flashcards", "claude-api", "education"],
-  "author": "Your Name",
-  "license": "MIT",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.24.3",
-    "formidable": "^3.5.1",
-    "pdf-parse": "^1.1.1",
-    "mammoth": "^1.7.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.294.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@eslint/js": "^9.29.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^7.0.0"
   }
 }
