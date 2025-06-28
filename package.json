@@ -17,6 +17,12 @@
   "keywords": ["telegram", "mini-app", "flashcards", "claude-api", "education"],
   "author": "Your Name",
   "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
+    "formidable": "^3.5.1",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.7.0"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2"
   }

@@ -1,13 +1,9 @@
 {
   "functions": {
-    "backend/server.js": {
+    "api/**/*.js": {
       "maxDuration": 30
     }
   },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js"
-    }
-  ]
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist"
 }
