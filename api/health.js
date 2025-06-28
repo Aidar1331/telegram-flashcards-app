@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
-  res.status(200).json({
+  res.json({
     status: 'OK',
-    timestamp: new Date().toISOString(),
+    timestamp: Date.now(),
     version: '1.0.0'
   });
 };
