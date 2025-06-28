@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "name": "telegram-flashcards-app",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "CLAUDE_API_KEY": "@claude_api_key",
+    "TELEGRAM_BOT_TOKEN": "@telegram_bot_token",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "backend/server.js": {
+      "maxDuration": 30
+    }
+  }
+}

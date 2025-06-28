@@ -1,0 +1,17 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "cd backend && npm start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[variables]
+NODE_ENV = "production"
+PORT = "3001"
+
+# Environment variables to be set manually in Railway dashboard:
+# CLAUDE_API_KEY = "your_claude_api_key"
+# TELEGRAM_BOT_TOKEN = "your_telegram_bot_token"

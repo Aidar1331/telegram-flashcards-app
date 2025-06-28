@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: telegram-flashcards-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLAUDE_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false  # Set manually in Render dashboard
+
+  - type: static
+    name: telegram-flashcards-frontend
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://telegram-flashcards-backend.onrender.com/api/$1
+      - type: rewrite
+        source: /*
+        destination: /index.html

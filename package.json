@@ -1,0 +1,23 @@
+{
+  "name": "telegram-flashcards-app",
+  "version": "1.0.0",
+  "description": "Telegram Mini App for generating flashcards from files and text using Claude API",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "deploy:vercel": "cd frontend && npx vercel --prod",
+    "deploy:railway": "railway deploy",
+    "setup": "chmod +x scripts/*.sh && ./scripts/install.sh"
+  },
+  "keywords": ["telegram", "mini-app", "flashcards", "claude-api", "education"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
